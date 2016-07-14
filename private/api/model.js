@@ -24,10 +24,11 @@ module.exports = {
                 callback(error)
             } else {
                 Reservation.find({
-                    status: "reserve"
+
                 }, {
                     sort: [
-                        ['reserveDatetime', -1]
+                        ['reserveDatetime', -1],
+                        ['status', -1]
                     ],
                     skip: rowCount * (current - 1),
                     limit: rowCount
