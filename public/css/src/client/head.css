@@ -1,0 +1,269 @@
+header.common-header {
+  font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "å¾®è½¯é›…é»‘", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #B78B60;
+  height: 80px;
+  z-index: 999;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-sizing: content-box;
+  filter:alpha(Opacity=80);
+  -moz-opacity:0.8;
+  opacity: 0.8;
+}
+
+header.common-header html,
+header.common-header body,
+header.common-header div,
+header.common-header span,
+header.common-header applet,
+header.common-header object,
+header.common-header iframe,
+header.common-header h1,
+header.common-header h2,
+header.common-header h3,
+header.common-header h4,
+header.common-header h5,
+header.common-header h6,
+header.common-header p,
+header.common-header blockquote,
+header.common-header pre,
+header.common-header a,
+header.common-header abbr,
+header.common-header acronym,
+header.common-header address,
+header.common-header big,
+header.common-header cite,
+header.common-header code,
+header.common-header del,
+header.common-header dfn,
+header.common-header em,
+header.common-header img,
+header.common-header ins,
+header.common-header kbd,
+header.common-header q,
+header.common-header s,
+header.common-header samp,
+header.common-header small,
+header.common-header strike,
+header.common-header strong,
+header.common-header sub,
+header.common-header sup,
+header.common-header tt,
+header.common-header var,
+header.common-header b,
+header.common-header u,
+header.common-header i,
+header.common-header center,
+header.common-header dl,
+header.common-header dt,
+header.common-header dd,
+header.common-header ol,
+header.common-header ul,
+header.common-header li,
+header.common-header fieldset,
+header.common-header form,
+header.common-header label,
+header.common-header legend,
+header.common-header table,
+header.common-header caption,
+header.common-header tbody,
+header.common-header tfoot,
+header.common-header thead,
+header.common-header tr,
+header.common-header th,
+header.common-header td,
+header.common-header article,
+header.common-header aside,
+header.common-header canvas,
+header.common-header details,
+header.common-header embed,
+header.common-header figure,
+header.common-header figcaption,
+header.common-header footer,
+header.common-header header,
+header.common-header hgroup,
+header.common-header main,
+header.common-header menu,
+header.common-header nav,
+header.common-header output,
+header.common-header ruby,
+header.common-header section,
+header.common-header summary,
+header.common-header time,
+header.common-header mark,
+header.common-header audio,
+header.common-header video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+header.common-header article,
+header.common-header aside,
+header.common-header details,
+header.common-header figcaption,
+header.common-header figure,
+header.common-header footer,
+header.common-header header,
+header.common-header hgroup,
+header.common-header main,
+header.common-header menu,
+header.common-header nav,
+header.common-header section {
+  display: block;
+}
+
+header.common-header body {
+  line-height: 1;
+}
+
+header.common-header ol,
+header.common-header ul {
+  list-style: none;
+}
+
+header.common-header blockquote,
+header.common-header q {
+  quotes: none;
+}
+
+header.common-header blockquote:before,
+header.common-header blockquote:after,
+header.common-header q:before,
+header.common-header q:after {
+  content: '';
+  content: none;
+}
+
+header.common-header a:hover,
+header.common-header a:active {
+  outline: none;
+}
+
+header.common-header table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+header.common-header input,
+header.common-header button,
+header.common-header textarea {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+header.common-header input:focus,
+header.common-header textarea:focus {
+  outline: none;
+}
+
+header.common-header a,
+header.common-header a:focus,
+header.common-header a:visited {
+  cursor: pointer;
+  color: #000000;
+  text-decoration: none;
+}
+
+header.common-header a:hover {
+  color: #FFFFFF;
+}
+
+header.common-header .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+@media (min-width: 820px) and (max-width: 1280px) {
+  header.common-header .container {
+    padding: 0 10px;
+  }
+}
+
+header.common-header .logo {
+  display: block;
+  width: 213px;
+  height: 53px;
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  filter:alpha(Opacity=100);
+  -moz-opacity:1;
+  opacity: 1;
+}
+
+header.common-header .logo img {
+  width: 100%;
+}
+@media (min-width: 820px) and (max-width: 1280px) {
+  header.common-header .logo {
+    left: 10px;
+  }
+}
+@media (max-width: 820px) {
+  header.common-header .logo {
+    left: 40px;
+  }
+}
+
+@media (min-width: 820px) {
+  body {
+    padding-top: 62px;
+  }
+  .triggers {
+    display: none;
+  }
+
+  header.common-header {
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  header.common-header .right-col {
+    float: right;
+    padding-right: 60px;
+  }
+
+  header.common-header .sub-nav {
+    height: 62px;
+    margin-right: -20px;
+    width: 100%;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  header.common-header .sub-nav > li {
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    height: 77px;
+    width: 70px;
+    line-height: 80px;
+    display: inline-block;
+    margin: 0 12px;
+    letter-spacing:2px;
+    vertical-align: middle;
+    border-bottom: 3px solid transparent;
+  }
+
+  header.common-header .sub-nav > li:hover {
+    border-bottom:3px solid #FFFFFF;
+    color: #FFFFFF;
+  }
+
+  header.common-header .sub-nav .active {
+    border-bottom:3px solid #FFFFFF;
+    color: #FFFFFF;
+  }
+
+  header.common-header .sub-nav > li i {
+    font-size: 20px;
+    vertical-align: -4px;
+    margin: 0 -2px 0 7px;
+  }
+}

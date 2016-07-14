@@ -1,0 +1,50 @@
+var config = require('../../config')
+
+var db = require('../util/db')(config.db.mongo.db),
+    Reservation = db.getCollection('reservation')
+
+module.exports = {
+    reserve_add: function(reserve, callback) {
+        Reservation.insert(reserve, function(error) {
+            callback(error, reserve)
+        })
+    },
+    reserve_get: function(phone, callback) {
+        Reservation.findOne({
+            phone: phone
+        }, callback)
+    },
+    reserve_list: function(current, rowCount, callback) {
+        Reservation.find({
+
+        }, {
+
+        }).toArray(function(error, reserves) {
+            if (error) {
+                callback(error)
+            } else {
+                Reservation.find({
+                    status: "reserve"
+                }, {
+                    sort: [
+                        ['reserveDatetime', -1]
+                    ],
+                    skip: rowCount * (current - 1),
+                    limit: rowCount
+                }).toArray(function(error, result) {
+                    if (error) {
+                        callback(error)
+                    } else {
+                        var data = {
+                            current: current,
+                            rowCount: rowCount,
+                            rows: result,
+                            total: reserves.length
+                        }
+                        callback(null, data)
+                    }
+                })
+            }
+        })
+    }
+}

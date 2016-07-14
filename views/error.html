@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>
+            <%= title %>
+        </title>
+        <!-- CSS -->
+        <link rel='stylesheet' href="/static/css/lib/animate.min.css" />
+        <link rel='stylesheet' href="/static/css/lib/sweetalert.css" />
+        <link rel='stylesheet' href="/static/css/lib/material-design-iconic-font.min.css" />
+        <link rel='stylesheet' href="/static/css/lib/bootstrap.min.css" />
+        <link rel='stylesheet' href="/static/css/build/admin/main.min.css" />
+        <!-- Javascript Libraries -->
+        <script type="text/javascript" src="/static/js/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/lib/moment.min.js"></script>
+        <script type="text/javascript" src="/static/js/lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/static/js/lib/sweetalert.min.js"></script>
+        <script type="text/javascript" src="/static/js/lib/jquery.nicescroll.min.js"></script>
+        <script type="text/javascript" src="/static/js/lib/jquery.sparkline.min.js"></script>
+        <script type="text/javascript" src="/static/js/lib/jquery.easypiechart.min.js"></script>
+        <script type="text/javascript" src="/static/js/lib/jquery.simpleWeather.min.js"></script>
+        <script type="text/javascript" src="/static/js/lib/jquery.flot.js"></script>
+        <script type="text/javascript" src="/static/js/lib/jquery.flot.resize.js"></script>
+        <script type="text/javascript" src="/static/js/lib/curvedLines.js"></script>
+        <script type="text/javascript" src="/static/js/lib/waves.min.js"></script>
+        <script type="text/javascript" src="/static/js/lib/bootstrap-growl.min.js"></script>
+    </head>
+    <body class="four-zero-content">
+        <% if (404 === error.status) { %>
+            <div class="four-zero">
+                <h2><%= error.status %></h2>
+                <small><%= error.message %></small>
+
+                <footer>
+                    <a href="<%= error.referer %>"><i class="zmdi zmdi-arrow-back"></i></a>
+                    <a href="/"><i class="zmdi zmdi-home"></i></a>
+                </footer>
+            </div>
+        <% } else { %>
+            <div class="four-zero">
+                <h2>500</h2>
+                <small>可能原因：网络出错或者是服务器出错了。</small>
+
+                <footer>
+                    <a href="<%= error.referer %>"><i class="zmdi zmdi-arrow-back"></i></a>
+                    <a href="/"><i class="zmdi zmdi-home"></i></a>
+                </footer>
+            </div>
+        <% } %>
+        <% include older %>
+    </body>
+</html>

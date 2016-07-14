@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>
+            <%= title %>
+        </title>
+        <!-- CSS -->
+        <link rel='stylesheet' href="/static/css/lib/material-design-iconic-font.min.css" />
+        <link rel='stylesheet' href="/static/css/lib/bootstrap.min.css" />
+        <link rel='stylesheet' href="/static/css/build/admin/main.min.css" />
+    </head>
+
+    <body class="login-content">
+        <% if (success) { %>
+          <div class="alert alert-success">
+            <%= success %>
+          </div>
+        <% } %>
+        <% if (error) { %>
+          <div class="alert alert-error">
+            <%= error %>
+          </div>
+        <% } %>
+        <!-- Login -->
+        <form class="lc-block toggled" id="l-login" method="post" action="login">
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                <div class="fg-line">
+                    <input type="text" name="username" class="form-control" placeholder="邮件地址/用户名称/手机号码">
+                </div>
+            </div>
+
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
+                <div class="fg-line">
+                    <input type="password" name="password" class="form-control" placeholder="用户密码">
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="">
+                    <i class="input-helper"></i> 记住我的账号
+                </label>
+            </div>
+
+            <button class="btn btn-login btn-danger btn-float" alt="登陆"><i class="zmdi zmdi-arrow-forward"></i></button>
+
+            <ul class="login-navigation">
+                <li data-block="#l-register" class="bgm-red">注册新用户</li>
+                <li data-block="#l-forget-password" class="bgm-orange">忘记密码?</li>
+            </ul>
+        </form>
+
+        <!-- Register -->
+        <form class="lc-block" id="l-register" method="post" action="register">
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                <div class="fg-line">
+                    <input type="text" name="username" class="form-control" placeholder="用户名称">
+                </div>
+            </div>
+
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                <div class="fg-line">
+                    <input type="text" name="email" class="form-control" placeholder="电子邮箱">
+                </div>
+            </div>
+
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
+                <div class="fg-line">
+                    <input type="text" name="phone" class="form-control" placeholder="手机号码">
+                </div>
+            </div>
+
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
+                <div class="fg-line">
+                    <input type="password" name="password" class="form-control" placeholder="用户密码">
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="helper" value="">
+                    <i class="input-helper"></i> 接受许可协议
+                </label>
+            </div>
+
+            <button class="btn btn-login btn-danger btn-float" alt="注册新用户"><i class="zmdi zmdi-arrow-forward"></i></button>
+
+            <ul class="login-navigation">
+                <li data-block="#l-login" class="bgm-green">登陆</li>
+                <li data-block="#l-forget-password" class="bgm-orange">忘记密码?</li>
+            </ul>
+        </form>
+
+        <!-- Forgot Password -->
+        <form class="lc-block" id="l-forget-password" method="post" action="password">
+            <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu risus. Curabitur commodo lorem fringilla enim feugiat commodo sed ac lacus.</p>
+
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                <div class="fg-line">
+                    <input type="text" name="email" class="form-control" placeholder="电子邮箱">
+                </div>
+            </div>
+
+            <button class="btn btn-login btn-danger btn-float" alt="找回密码"><i class="zmdi zmdi-arrow-forward"></i></button>
+
+            <ul class="login-navigation">
+                <li data-block="#l-login" class="bgm-green">登陆</li>
+                <li data-block="#l-register" class="bgm-red">注册新用户</li>
+            </ul>
+        </form>
+
+        <!-- Javascript Libraries -->
+        <script src="/static/js/lib/jquery.min.js"></script>
+        <script src="/static/js/lib/bootstrap.min.js"></script>
+
+        <script src="/static/js/lib/waves.min.js"></script>
+
+        <!-- Placeholder for IE9 -->
+        <!--[if IE 9 ]>
+            <script src="/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+        <![endif]-->
+
+        <script type="text/javascript" src="/static/js/build/admin/main.min.js"></script>
+    </body>
+</html>
