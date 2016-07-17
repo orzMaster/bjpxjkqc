@@ -1,15 +1,5 @@
 <style>
 
-.dropzone {
-    min-height: 200px;
-    border: 0px;
-}
-
-.dz-image {
-    border: 1px solid #777777;
-    border-radius: 10px;
-}
-
 </style>
 
 <template>
@@ -55,12 +45,12 @@
         <table id="grid-command-community" class="table table-striped table-vmiddle">
             <thead>
                 <tr>
-                    <th data-column-id="contact" data-width="15%">客户姓名</th>
-                    <th data-column-id="phone" data-width="15%">手机号</th>
-                    <th data-column-id="status" data-width="20%" data-formatter="status">状态</th>
+                    <th data-column-id="contact" data-width="10%">客户姓名</th>
+                    <th data-column-id="phone" data-width="10%">手机号</th>
+                    <th data-column-id="status" data-width="25%" data-formatter="status">状态</th>
                     <th data-column-id="reserveDatetime" data-width="15%">预约时间</th>
                     <th data-column-id="createDatetime" data-width="15%" data-align="center" data-header-align="center" data-order="desc">创建时间</th>
-                    <th data-column-id="commands" data-width="10%" data-align="center" data-header-align="center" data-formatter="commands" data-sortable="false">操作</th>
+                    <th data-column-id="commands" data-width="15%" data-align="center" data-header-align="center" data-formatter="commands" data-sortable="false">操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -82,67 +72,71 @@ module.exports = {
         }
     },
     methods: {
+        laodReserveList: function(){
+            var self = this
+            var grid = $("#grid-command-community").bootgrid({
+                ajax: true,
+                post: function() {
+                    return {
 
+                    };
+                },
+                url: '/api/reserve/list',
+                css: {
+                    icon: 'zmdi icon',
+                    iconColumns: 'zmdi-view-module',
+                    iconDown: 'zmdi-sort-amount-desc',
+                    iconRefresh: 'zmdi-refresh',
+                    iconUp: 'zmdi-sort-amount-asc'
+                },
+                labels: {
+                    all: "全部",
+                    infos: "显示 {{ctx.start}} 到 {{ctx.end}} 共 {{ctx.total}} 条数据",
+                    loading: "加载中...",
+                    noResults: "没有找到相关数据!",
+                    refresh: "刷新",
+                    search: "搜索"
+                },
+                templates: {
+                    actionButton: '<div class="{{css.dropDownMenu}}"><button class="btn btn-default" type="button" title="{{ctx.text}}">{{ctx.content}}</button></div>',
+                },
+                formatters: {
+                    'status': function(column, row) {
+                        switch (row.status) {
+                            case 'reserve':
+                                return '预约中'
+                            case 'drive':
+                                return '试驾中'
+                            case 'done':
+                                return '已完成'
+                        }
+                    },
+                    'commands': function(column, row) {
+                        var str = ''
+                        str += '<button rel="rs-dialog" data-target="edit-dialog" type="button" class="btn btn-icon command-edit" data-row-id="' + row._id + '" data-row-contact="' + row.contact + '" data-row-status="' + row.status + '" data-row-phone="' + row.phone + '"><span class="zmdi zmdi-edit"></span></button> '
+                        str += '<button type="button" class="btn btn-icon command-delete" data-row-contact="' + row.contact + '" data-row-id="' + row._id + '"><span class="zmdi zmdi-delete"></span></button>'
+                        return str
+                    }
+                }
+            })
+            return grid
+        }
     },
     components: {
         edit: require('./edit.vue')
     },
     ready: function() {
         var self = this
-        var grid = $("#grid-command-community").bootgrid({
-            ajax: true,
-            post: function() {
-                return {
-
-                };
-            },
-            url: '/api/reserve/list',
-            css: {
-                icon: 'zmdi icon',
-                iconColumns: 'zmdi-view-module',
-                iconDown: 'zmdi-sort-amount-desc',
-                iconRefresh: 'zmdi-refresh',
-                iconUp: 'zmdi-sort-amount-asc'
-            },
-            labels: {
-                all: "全部",
-                infos: "显示 {{ctx.start}} 到 {{ctx.end}} 共 {{ctx.total}} 条数据",
-                loading: "加载中...",
-                noResults: "没有找到相关数据!",
-                refresh: "刷新",
-                search: "搜索"
-            },
-            templates: {
-                actionButton: '<div class="{{css.dropDownMenu}}"><button class="btn btn-default" type="button" title="{{ctx.text}}">{{ctx.content}}</button></div>',
-            },
-            formatters: {
-                'status': function(column, row) {
-                    switch (row.status) {
-                        case 'reserve':
-                            return '预约中'
-                        case 'drive':
-                            return '试驾中'
-                        case 'done':
-                            return '已完成'
-                    }
-                },
-                'commands': function(column, row) {
-                    var str = ''
-                    str += '<button rel="rs-dialog" data-target="edit-dialog" type="button" class="btn btn-icon command-edit" data-row-id="' + row._id + '" data-row-contact="' + row.contact + '" data-row-status="' + row.status + '" data-row-phone="' + row.phone + '"><span class="zmdi zmdi-edit"></span></button> '
-                    str += '<button type="button" class="btn btn-icon command-delete" data-row-contact="' + row.contact + '" data-row-id="' + row._id + '"><span class="zmdi zmdi-delete"></span></button>'
-                    return str
-                }
-            }
-        }).on("loaded.rs.jquery.bootgrid", function() {
-            /* Executes after data is loaded and rendered */
+        var grid = self.laodReserveList()
+        grid.on("loaded.rs.jquery.bootgrid", function() {
             grid.find(".command-edit").on("click", function(e) {
-                // alert("You pressed edit on row: " + $(this).data("row-id"));
-                self.$children[0].$data.item = {
-                    contact: $(this).data("row-contact"),
-                    status: $(this).data("row-status"),
-                    phone: $(this).data("row-phone")
-                }
                 var trigger = $(this);
+                self.$children[0].$data.reserve = {
+                    id: trigger.data("row-id"),
+                    contact: trigger.data("row-contact"),
+                    status: trigger.data("row-status"),
+                    phone: trigger.data("row-phone")
+                };
                 var rs_dialog = $('#' + trigger.data('target'));
                 var rs_box = rs_dialog.find('.rs-dialog-box');
                 var rs_save = rs_dialog.find('.save-model');
@@ -150,9 +144,7 @@ module.exports = {
                 var rs_overlay = $('.rs-overlay');
                 if (!rs_dialog.length) return true;
 
-                // Open dialog
                 trigger.click(function() {
-                    //Get the scrollbar width and avoid content being pushed
                     var w1 = $(window).width();
                     $('html').addClass('dialog-open');
                     var w2 = $(window).width();
@@ -167,10 +159,9 @@ module.exports = {
                 });
 
                 rs_save.click(function(e) {
-                    return true;
+                    return false;
                 });
 
-                // Close dialog when clicking on the close button
                 rs_close.click(function(e) {
                     rs_dialog.removeClass('in').delay(150).queue(function() {
                         rs_dialog.hide().dequeue();
@@ -181,7 +172,6 @@ module.exports = {
                     return false;
                 });
 
-                // Close dialog when clicking outside the dialog
                 rs_dialog.click(function(e) {
                     rs_close.trigger('click');
                 });

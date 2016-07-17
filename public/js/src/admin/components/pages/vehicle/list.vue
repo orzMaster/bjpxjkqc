@@ -1,15 +1,5 @@
 <style>
 
-.dropzone {
-    min-height: 200px;
-    border: 0px;
-}
-
-.dz-image {
-    border: 1px solid #777777;
-    border-radius: 10px;
-}
-
 </style>
 
 <template>
@@ -93,7 +83,7 @@ module.exports = {
 
                 };
             },
-            url: '/api/community/list',
+            url: '/api/vehicle/list',
             css: {
                 icon: 'zmdi icon',
                 iconColumns: 'zmdi-view-module',

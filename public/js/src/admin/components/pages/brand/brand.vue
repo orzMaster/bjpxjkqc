@@ -2,12 +2,23 @@
 
 .dropzone {
     min-height: 200px;
-    border: 0px;
+    max-width: 175px;
+    border: 1px solid #777777;
 }
 
-.dz-image {
+.dropzone .dz-preview .dz-image {
     border: 1px solid #777777;
-    border-radius: 10px;
+    border-radius: 5px;
+    width: 100px;
+    height: 100px;
+}
+
+.brand-icon {
+    border: 1px solid transparent;
+}
+
+.brand-icon:hover {
+    border: 1px solid #777777;
 }
 
 </style>
@@ -49,28 +60,20 @@
         </div>
 
         <div class="card-body card-padding" role="brand">
-            <form method="post" action="/api/brand/add">
+            <form>
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput"></div>
-                            <div>
-                                <span class="btn btn-info btn-file">
-                                    <span class="fileinput-new">选择图片</span>
-                                <span class="fileinput-exists">上传</span>
-                                <input type="file" name="..." v-model="brand.file">
-                                </span>
-                                <a href="form-components.html#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">删除</a>
-                            </div>
-                        </div>
+                        <div class="dropzone"></div>
                     </div>
+                    <input type="text" name="path" v-model="brand.path" hidden="hidden">
                 </div>
+                <br>
                 <br>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group fg-float">
                             <div class="fg-line">
-                                <input type="name" class="form-control">
+                                <input type="name" name="name" v-model="brand.name" class="form-control">
                                 <label class="fg-label">品牌名称</label>
                             </div>
                         </div>
@@ -78,13 +81,13 @@
                     <div class="col-sm-6">
                         <div class="form-group fg-float">
                             <div class="fg-line">
-                                <input type="url" class="form-control">
+                                <input type="url" name="url" v-model="brand.url" class="form-control">
                                 <label class="fg-label">品牌网址</label>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-info">添加</button>
+                <button type="button" class="btn btn-info" @click="addBrand">添加</button>
                 <button type="reset" class="btn btn-link">取消</button>
             </form>
         </div>
@@ -104,7 +107,7 @@
 
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li>
-                            <a href="widgets.html">刷新</a>
+                            <a href="">刷新</a>
                         </li>
                     </ul>
                 </li>
@@ -112,13 +115,14 @@
         </div>
 
         <div class="pl-body card-padding">
-            <div class="col-xs-3" v-for="brand in brands">
-                <a href="widgets.html" id="brand_{{brand.id}}">
+            <div class="col-xs-3 brand-icon" v-for="brand in brands">
+                <a href="" id="{{brand._id}}">
                     <img :src="brand.src" alt="">
                 </a>
             </div>
         </div>
     </div>
+    <edit></edit>
 </div>
 
 </template>
@@ -130,29 +134,63 @@ module.exports = {
         return {
             title: '品牌管理',
             brand: {},
-            brands: [{
-                id: '01',
-                src: '/static/images/admin/headers/square/1.png'
-            },{
-                id: '01',
-                src: '/static/images/admin/headers/square/2.png'
-            },{
-                id: '01',
-                src: '/static/images/admin/headers/square/3.png'
-            },{
-                id: '01',
-                src: '/static/images/admin/headers/square/4.png'
-            }]
+            brands: []
         }
     },
     methods: {
+        addBrand: function() {
+            if (this.brand) {
+                this.$http.post('/api/brand/add', this.brand, function(data, status, request) {
+                    this.$set('brand', null)
+                    this.loadBrands();
+                }).error(function(data, status, request) {
 
+                })
+            }
+        },
+        loadBrands: function() {
+            this.$http.post('/api/brand/list', function(data, status, request) {
+                this.$set('brands', data)
+            }).error(function(data, status, request) {
+
+            })
+        }
     },
     components: {
-
+        edit: require('./edit.vue')
     },
     ready: function() {
-
+        var self = this
+        self.loadBrands();
+        Dropzone.autoDiscover = false
+        $(".dropzone").dropzone({
+            url: "/api/upload/brand",
+            addRemoveLinks: true,
+            maxFiles: 1,
+            maxFilesize: 512,
+            acceptedFiles: ".png,.jpg,.jpeg",
+            dictDefaultMessage: "点击或拖拽图片到此区域",
+            dictFallbackMessage: "Fallback。",
+            dictInvalidInputType: "文件类型被拒绝。",
+            dictFileTooBig: "文件大小过大。",
+            dictCancelUpload: "取消上传",
+            dictRemoveLinks: "删除图片",
+            dictCancelUploadConfirmation: "取消上传。",
+            dictRemoveFile: "删除图片",
+            dictMaxFilesExceeded: "超过最大文件数量。",
+            init: function() {
+                this.on("success", function(file) {
+                    console.log("File " + file.name + "uploaded");
+                });
+                this.on("removedfile", function(file) {
+                    console.log("File " + file.name + "removed");
+                });
+                this.on("complete", function(data) {
+                    var json = JSON.parse(data.xhr.responseText)
+                    self.$set('brand.src', json.src)
+                })
+            }
+        });
     }
 }
 
