@@ -193,9 +193,9 @@
 
 .pictures .carousel-control {
     position: absolute;
-    top: 40%;
-    width: 40px;
-    height: 40px;
+    top: 50%;
+    width: 50px;
+    height: 50px;
     margin-top: -20px;
     font-size: 60px;
     font-weight: 100;
@@ -206,9 +206,19 @@
     border: 3px solid #fff;
     -webkit-border-radius: 23px;
     -moz-border-radius: 23px;
-    border-radius: 23px;
+    border-radius: 50px;
     opacity: .5;
     filter: alpha(opacity=50);
+}
+
+.pictures .carousel-control .glyphicon-chevron-left {
+    top: 17px;
+    left: 17px;
+}
+
+.pictures .carousel-control .glyphicon-chevron-right {
+    top: 17px;
+    right: 17px;
 }
 
 .promise {}
