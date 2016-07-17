@@ -30,6 +30,7 @@ build/Release
 node_modules
 bower_components
 jspm_packages
+public/upload/**/
 public/css/build/client/*.css
 public/css/build/admin/*.css
 public/js/build/client/*.js
