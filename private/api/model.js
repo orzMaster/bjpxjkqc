@@ -65,6 +65,9 @@ module.exports = {
             }
         })
     },
+    brand_get: function(brand_id, callback) {
+        Brand.findById(brand_id, callback)
+    },
     brand_add: function(brand, callback) {
         Brand.insert(brand, function(error) {
             callback(error, brand)

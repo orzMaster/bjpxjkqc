@@ -29,6 +29,7 @@ router.post('/upload/file', upload.upload_file);
 router.post('/upload/images', upload.upload_images);
 router.post('/upload/brand', upload.upload_brand);
 
+router.post('/brand/get', controller.brand_get);
 router.post('/brand/add', controller.brand_add);
 router.post('/brand/list', controller.brand_list);
 

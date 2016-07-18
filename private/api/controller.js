@@ -54,6 +54,11 @@ module.exports = {
             res.send(data)
         })
     },
+    brand_get: function(req, res, next) {
+        manager.brand_get(req.body, function(error, data) {
+            res.send(data)
+        })
+    },
     brand_add: function(req, res, next) {
         manager.brand_add(req.body, function(error, data) {
             res.send(data)

@@ -1,5 +1,7 @@
 <style>
 
+
+
 </style>
 
 <template>
@@ -45,11 +47,10 @@
     <table id="grid-command-community" class="table table-striped table-vmiddle">
         <thead>
             <tr>
-                <th data-column-id="name" data-width="15%">名称</th>
-                <th data-column-id="title" data-width="15%" data-formatter="link">标题</th>
-                <th data-column-id="description" data-width="30%">介绍</th>
-                <th data-column-id="video" data-width="10%" data-align="center" data-header-align="center" data-formatter="video">视频占比</th>
-                <th data-column-id="updated" data-width="16%" data-align="center" data-header-align="center" data-formatter="updated" data-order="desc">更新时间</th>
+                <th data-column-id="type" data-width="10%" data-formatter="type">分类</th>
+                <th data-column-id="brand" data-width="10%" data-formatter="brand">品牌</th>
+                <th data-column-id="title" data-width="30%" data-formatter="title">标题</th>
+                <th data-column-id="remark" data-width="40%" data-formatter="remark">说明</th>
                 <th data-column-id="commands" data-width="10%" data-align="center" data-header-align="center" data-formatter="commands" data-sortable="false">操作</th>
             </tr>
         </thead>
@@ -66,16 +67,23 @@
 module.exports = {
     data: function() {
         return {
-            title: '车辆列表'
+            title: '车辆列表',
+            brands: []
         }
     },
     methods: {
-
+        loadBrands: function(brand, callback){
+            this.$http.post('/api/brand/list', { }, function(data, status, request){
+                this.$set('brands', data)
+            })
+        }
     },
     components: {
 
     },
     ready: function() {
+        var self = this
+        self.loadBrands()
         var grid = $("#grid-command-community").bootgrid({
             ajax: true,
             post: function() {
@@ -103,21 +111,19 @@ module.exports = {
                 actionButton: '<div class="{{css.dropDownMenu}}"><button class="btn btn-default" type="button" title="{{ctx.text}}">{{ctx.content}}</button></div>',
             },
             formatters: {
-                'video': function(column, row) {
-                    var str = ''
-                    str += '<div style="width:100%">'
-                    str += (typeof row.video === 'undefined') ? '0' : row.video
-                    str += '</div>'
-                    str += '<div style="width:100%">'
-                    str += (typeof row.offset_video === 'undefined') ? '0' : row.offset_video
-                    str += '</div>'
-                    return str
+                'type': function(column, row) {
+                    switch (row.type) {
+                        case 'period':
+                            return '期车'
+                        case 'present':
+                            return '现车'
+                    }
                 },
-                'updated': function(column, row) {
-                    return moment(row.updated * 1000).format('YYYY-MM-DD HH:mm:ss');
-                },
-                'link': function(column, row) {
-                    return '<a href="' + row.url + '">' + row.title + '</a>';
+                'brand': function(column, row) {
+                    for(var i in self.brands){
+                        if(self.brands[i]._id == row.brand)
+                            return self.brands[i].name
+                    }
                 },
                 'commands': function(column, row) {
                     var str = ''

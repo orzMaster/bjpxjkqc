@@ -83,6 +83,9 @@ module.exports = {
 
         model.reserve_list(current, rowCount, callback)
     },
+    brand_get: function(body, callback) {
+        model.brand_get(body.brand_id, callback)
+    },
     brand_add: function(body, callback) {
         model.brand_add(body, callback)
     },
