@@ -98,10 +98,12 @@ module.exports = {
     vehicle_list: function(body, callback) {
         console.log(body)
         var id = body.id
+        var type = body.type
+        var brand = body.brand
         var current = parseInt(body.current)
         var rowCount = parseInt(body.rowCount)
         var searchPhrase = body.searchPhrase
 
-        model.vehicle_list(current, rowCount, callback)
+        model.vehicle_list(type, brand, current, rowCount, callback)
     }
 }

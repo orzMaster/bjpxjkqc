@@ -91,7 +91,7 @@ module.exports = {
             callback(error, vehicle)
         })
     },
-    vehicle_list: function(current, rowCount, callback) {
+    vehicle_list: function(type, brand, current, rowCount, callback) {
         Vehicle.find({
 
         }, {
@@ -101,7 +101,7 @@ module.exports = {
                 callback(error)
             } else {
                 Vehicle.find({
-
+                    type: type
                 }, {
                     skip: rowCount * (current - 1),
                     limit: rowCount
