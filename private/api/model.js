@@ -2,7 +2,8 @@ var config = require('../../config')
 
 var db = require('../util/db')(config.db.mongo.db),
     Brand = db.getCollection('brand'),
-    Reservation = db.getCollection('reservation')
+    Reservation = db.getCollection('reservation'),
+    Vehicle = db.getCollection('vehicle')
 
 module.exports = {
     reserve_add: function(reserve, callback) {
@@ -88,6 +89,33 @@ module.exports = {
         })
     },
     vehicle_list: function(current, rowCount, callback) {
+        Vehicle.find({
 
+        }, {
+
+        }).toArray(function(error, vehicles) {
+            if (error) {
+                callback(error)
+            } else {
+                Vehicle.find({
+
+                }, {
+                    skip: rowCount * (current - 1),
+                    limit: rowCount
+                }).toArray(function(error, result) {
+                    if (error) {
+                        callback(error)
+                    } else {
+                        var data = {
+                            current: current,
+                            rowCount: rowCount,
+                            rows: result,
+                            total: vehicles.length
+                        }
+                        callback(null, data)
+                    }
+                })
+            }
+        })
     }
 }

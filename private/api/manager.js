@@ -93,6 +93,7 @@ module.exports = {
         model.vehicle_add(body, callback)
     },
     vehicle_list: function(body, callback) {
+        console.log(body)
         var id = body.id
         var current = parseInt(body.current)
         var rowCount = parseInt(body.rowCount)

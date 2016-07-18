@@ -313,19 +313,20 @@
 <div class="introduce">
     <div class="info">
         <div class="type">
-            <div class="item-type" :class="{ 'item-type-check': item.type == 'present' }">
+            <div class="item-type" :class="{ 'item-type-check': type == 'present' }">
                 <span class="title">现车</span>
                 <span class="sub-title">Present car</span>
-                <input type="radio" name="type" value="present" v-model="item.type" />
+                <input type="radio" name="type" value="present" v-model="type" />
                 <div class="item-check"></div>
             </div>
-            <div class="item-type" :class="{ 'item-type-check': item.type == 'period' }">
+            <div class="item-type" :class="{ 'item-type-check': type == 'period' }">
                 <span class="title">期车</span>
                 <span class="sub-title">Period car</span>
-                <input type="radio" name="type" value="period" v-model="item.type" />
+                <input type="radio" name="type" value="period" v-model="type" />
                 <div class="item-check"></div>
             </div>
         </div>
+
         <div class="brand">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -421,30 +422,30 @@
             </div>
         </div>
         <div class="carlist">
-            <div class="description" v-for="car in cars">
+            <div class="description" v-for="vehicle in vehicles">
                 <div class="picture">
                     <img data-src="holder.js/140x140" class="img-rounded" data-holder-rendered="true" style="width: 411px; height: 271px;" alt="140x140" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTU2ODdkM2I0MiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1NTY4N2QzYjQyIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ0LjA1NDY4NzUiIHk9Ijc0LjUiPjE0MHgxNDA8L3RleHQ+PC9nPjwvZz48L3N2Zz4=">
                 </div>
                 <div class="carinfo">
                     <div class="name">
-                        <span>{{ car.name }}</span>
+                        <span>{{ vehicle.title }}</span>
                     </div>
                     <div class="price">
-                        <span><font class="money">{{ car.price.formatMoney(0, '&yen;') }}</font>元</span>
+                        <span><font class="money">{{ vehicle.colors[vehicle.color].price.formatMoney(0, '&yen;') }}</font>元</span>
                     </div>
                     <div class="color">
                         <div class="color-group">
-                            <div class="color-type" v-for="color in car.colors" :class="{ 'color-type-check': car.color == color.class }">
+                            <div class="color-type" v-for="color in vehicle.colors" :class="{ 'color-type-check': vehicle.color == color.id }">
                                 <div class="circle {{ color.class }}"></div>
                                 <span>{{ color.name }}</span>
-                                <input type="radio" name="type" value="{{ color.class }}" v-model="car.color" />
+                                <input type="radio" name="type" value="{{ color.id }}" v-model="vehicle.color" />
                                 <div class="color-check"></div>
                                 <i class="zmdi zmdi-check zmdi-hc-fw"></i>
                             </div>
                         </div>
                     </div>
                     <div class="remark">
-                        <span>{{ car.remark }}</span>
+                        <span>{{ vehicle.remark }}</span>
                     </div>
                 </div>
             </div>
@@ -462,55 +463,49 @@
 module.exports = {
     data: function() {
         return {
-            item: {
-                type: 'present'
-            },
-            cars: [{
-                name: '16款探险者XLT 2.3T汽油四驱五门七座版',
-                price: 4992334,
-                color: 'black',
-                remark: '2.3T 手自一体 精英版 EcoBoost2.3T 手自一体 风尚版 EcoBoost3.5T',
-                colors: [{
-                    name: '摩纳哥蓝',
-                    class: 'darkblue'
-                }, {
-                    name: '安迪斯棕',
-                    class: 'brown'
-                }, {
-                    name: '珍珠岩白',
-                    class: 'white'
-                }, {
-                    name: '塞舌尔黒',
-                    class: 'black'
-                }]
-            }, {
-                name: '16款探险者XLT 2.3T汽油四驱五门七座版',
-                price: 4992334,
-                color: 'black',
-                remark: '2.3T 手自一体 精英版 EcoBoost2.3T 手自一体 风尚版 EcoBoost3.5T',
-                colors: [{
-                    name: '摩纳哥蓝',
-                    class: 'darkblue'
-                }, {
-                    name: '安迪斯棕',
-                    class: 'brown'
-                }, {
-                    name: '珍珠岩白',
-                    class: 'white'
-                }, {
-                    name: '塞舌尔黒',
-                    class: 'black'
-                }]
-            }]
+            type: 'present',
+            brand: '',
+            brands: [],
+            vehicles: [],
+            current: 1
         }
     },
     methods: {
+        loadBrand: function() {
+            var self = this
+            self.$http.post('api/brand/list', {
 
+            }, function(data, status, request) {
+                self.$set('brands', data)
+            }).error(function(data, status, request) {
+
+            })
+        },
+        loadVehicle: function() {
+            var self = this
+            self.$http.post('api/vehicle/list', {
+                type: self.type,
+                brand: self.brand,
+                current: self.current,
+                rowCount: 10,
+                sort: {
+                    updated: 'desc'
+                },
+                searchPhrase: ''
+            }, function(data, status, request) {
+                self.$set('vehicles', data.rows)
+            }).error(function(data, status, request) {
+
+            })
+        }
     },
     components: {
 
     },
     ready: function() {
+        var self = this
+        self.loadBrand()
+        self.loadVehicle()
         var swiper = new Swiper('.swiper-container', {
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
@@ -524,7 +519,7 @@ module.exports = {
             perpage: 10,
             format: '[< ncnnn >]',
             onSelect: function(currentPage) {
-
+                self.$set('current', currentPage)
             },
             onFormat: function(type) {
                 switch (type) {

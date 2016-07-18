@@ -110,86 +110,8 @@
     <div class="cooperation">
         <span class="title">合作品牌</span>
         <ul>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_11.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_13.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_15.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_17.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_19.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_21.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_23.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_25.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_27.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_38.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_39.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_40.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_41.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_42.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_44.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_45.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_47.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_48.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_58.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_59.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_60.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_61.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_62.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_63.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_64.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_66.png"></a>
-            </li>
-            <li>
-                <a href="" target="_black"><img src="/static/images/client/home_67.png"></a>
+            <li v-for="brand in brands">
+                <a :href="brand.url" target="_black" :alt="brand.name"><img :src="brand.src"></a>
             </li>
         </ul>
     </div>
@@ -202,17 +124,27 @@
 module.exports = {
     data: function() {
         return {
-
+            brands: []
         }
     },
     methods: {
+        loadBrand: function() {
+            var self = this
+            self.$http.post('api/brand/list', {
 
+            }, function(data, status, request) {
+                self.$set('brands', data)
+            }).error(function(data, status, request) {
+
+            })
+        }
     },
     components: {
 
     },
     ready: function() {
-
+        var self = this
+        self.loadBrand();
     }
 }
 
