@@ -32,4 +32,7 @@ router.post('/upload/brand', upload.upload_brand);
 router.post('/brand/add', controller.brand_add);
 router.post('/brand/list', controller.brand_list);
 
+router.post('/vehicle/add', controller.vehicle_add);
+router.post('/vehicle/list', controller.vehicle_list);
+
 module.exports = router;

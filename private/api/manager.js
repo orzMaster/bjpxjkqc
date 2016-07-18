@@ -88,5 +88,16 @@ module.exports = {
     },
     brand_list: function(body, callback) {
         model.brand_list(body, callback)
+    },
+    vehicle_add: function(body, callback) {
+        model.vehicle_add(body, callback)
+    },
+    vehicle_list: function(body, callback) {
+        var id = body.id
+        var current = parseInt(body.current)
+        var rowCount = parseInt(body.rowCount)
+        var searchPhrase = body.searchPhrase
+
+        model.vehicle_list(current, rowCount, callback)
     }
 }

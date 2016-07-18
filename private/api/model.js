@@ -81,5 +81,13 @@ module.exports = {
                 callback(null, result)
             }
         })
+    },
+    vehicle_add: function(vehicle, callback) {
+        Vehicle.insert(vehicle, function(error) {
+            callback(error, vehicle)
+        })
+    },
+    vehicle_list: function(current, rowCount, callback) {
+
     }
 }

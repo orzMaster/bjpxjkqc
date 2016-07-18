@@ -63,5 +63,15 @@ module.exports = {
         manager.brand_list(req.body, function(error, data) {
             res.send(data)
         })
+    },
+    vehicle_add: function(req, res, next) {
+        manager.vehicle_add(req.body, function(error, data) {
+            res.send(data)
+        })
+    },
+    vehicle_list: function(req, res, next) {
+        manager.vehicle_list(req.body, function(error, data) {
+            res.send(data)
+        })
     }
 }
