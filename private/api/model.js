@@ -100,9 +100,14 @@ module.exports = {
             if (error) {
                 callback(error)
             } else {
-                Vehicle.find({
-                    type: type
-                }, {
+                var query = {}
+                if (type) {
+                    query.type = type
+                }
+                if (brand) {
+                    query.brand = brand
+                }
+                Vehicle.find(query, {
                     skip: rowCount * (current - 1),
                     limit: rowCount
                 }).toArray(function(error, result) {

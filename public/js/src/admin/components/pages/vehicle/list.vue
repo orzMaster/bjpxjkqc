@@ -72,8 +72,8 @@ module.exports = {
         }
     },
     methods: {
-        loadBrands: function(brand, callback){
-            this.$http.post('/api/brand/list', { }, function(data, status, request){
+        loadBrands: function(brand, callback) {
+            this.$http.post('/api/brand/list', {}, function(data, status, request) {
                 this.$set('brands', data)
             })
         }
@@ -88,7 +88,7 @@ module.exports = {
             ajax: true,
             post: function() {
                 return {
-
+                    
                 };
             },
             url: '/api/vehicle/list',
@@ -120,8 +120,8 @@ module.exports = {
                     }
                 },
                 'brand': function(column, row) {
-                    for(var i in self.brands){
-                        if(self.brands[i]._id == row.brand)
+                    for (var i in self.brands) {
+                        if (self.brands[i]._id == row.brand)
                             return self.brands[i].name
                     }
                 },

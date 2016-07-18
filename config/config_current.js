@@ -1,5 +1,6 @@
 module.exports = {
     name: 'vue-seed',
+    title: '北京平行进口汽车',
     express: {
         host: '127.0.0.1',
         port: 2222
