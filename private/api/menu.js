@@ -71,6 +71,17 @@ var menus = [{
 		open: false,
 		menus: []
 	}]
+}, {
+	menu_id: 5,
+	sub_id: 0,
+	title: '上传文件',
+	category: 'upload',
+	class: 'zmdi zmdi-assignment',
+	url: '/upload',
+	active: false,
+	sub: false,
+	open: false,
+	menus: []
 }]
 
 module.exports.menus = menus

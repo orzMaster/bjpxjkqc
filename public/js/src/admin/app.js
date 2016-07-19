@@ -10,6 +10,7 @@ var router = new VueRouter();
 var App = require('./app.vue');
 
 var dashboard = require('./components/pages/dashboard.vue');
+var upload = require('./components/pages/upload.vue');
 var brand = require('./components/pages/brand/brand.vue');
 var vehicle_list = require('./components/pages/vehicle/list.vue');
 var vehicle_add = require('./components/pages/vehicle/add.vue');
@@ -24,6 +25,10 @@ router.map({
 	'/dashboard': {
 		name: 'dashboard',
 		component: Vue.extend(dashboard)
+	},
+	'/upload': {
+		name: 'upload',
+		component: Vue.extend(upload)
 	},
 	'/brand': {
 		name: 'brand',
