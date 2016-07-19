@@ -90,8 +90,8 @@ module.exports = {
             } else {
                 this.$http.post('api/verify/code', {
                     phone: this.phone
-                }, function(data, status, request) {
-                    if (data.error) {
+                }).then((response) => {
+                    if (response.data.error) {
                         swal({
                             title: "提示!",
                             text: "获取短信验证码失败!",
@@ -102,10 +102,10 @@ module.exports = {
 
                         });
                     } else {
-                        if (data.code < 0) {
+                        if (response.data.code < 0) {
                             swal({
                                 title: "提示!",
-                                text: "您当天已经预约过了!预约时间:" + data.datetime,
+                                text: "您当天已经预约过了!预约时间:" + response.data.datetime,
                                 type: "warning",
                                 confirmButtonText: "确认",
                                 closeOnConfirm: true
@@ -113,7 +113,7 @@ module.exports = {
                                 $('#attributeForm')[0].reset()
                             })
                         } else {
-                            this.$set('verify', data.code)
+                            this.$set('verify', response.data.code)
                             swal({
                                 title: "提示!",
                                 text: "请确认手机收到的验证码.",
@@ -139,8 +139,6 @@ module.exports = {
                             }, 1000);
                         }
                     }
-                }).error(function(data, status, request) {
-
                 })
             }
         },

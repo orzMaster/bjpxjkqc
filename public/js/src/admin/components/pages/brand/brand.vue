@@ -140,19 +140,17 @@ module.exports = {
     methods: {
         addBrand: function() {
             if (this.brand) {
-                this.$http.post('/api/brand/add', this.brand, function(data, status, request) {
+                this.$http.post('/api/brand/add', this.brand).then((response) => {
                     $(".dropzone").removeAllFiles();
                     this.$set('brand', null)
                     this.loadBrands();
-                }).error(function(data, status, request) {
-
                 })
             }
         },
         loadBrands: function() {
             var self = this
-            self.$http.post('/api/brand/list', {}, function(data, status, request) {
-                self.$set('brands', data)
+            self.$http.post('/api/brand/list', {}).then((response) => {
+                self.$set('brands', response.data)
                 self.$nextTick(function() {
                     $("a[rel='rs-dialog']").each(function() {
                         var trigger = $(this);
@@ -208,8 +206,6 @@ module.exports = {
                         });
                     });
                 })
-            }).error(function(data, status, request) {
-
             })
         }
     },

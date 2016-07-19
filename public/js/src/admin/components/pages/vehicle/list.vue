@@ -73,8 +73,8 @@ module.exports = {
     },
     methods: {
         loadBrands: function(brand, callback) {
-            this.$http.post('/api/brand/list', {}, function(data, status, request) {
-                this.$set('brands', data)
+            this.$http.post('/api/brand/list', {}).then((response) => {
+                this.$set('brands', response.data)
             })
         }
     },
@@ -88,7 +88,7 @@ module.exports = {
             ajax: true,
             post: function() {
                 return {
-                    
+
                 };
             },
             url: '/api/vehicle/list',

@@ -55,9 +55,7 @@ module.exports = {
     },
     methods: {
         updateBrand: function(e){
-            this.$http.post('/api/brand/update', this.brand, function(data, status, request) {
-
-            }).error(function(data, status, request) {
+            this.$http.post('/api/brand/update', this.brand).then((response) => {
 
             })
         }

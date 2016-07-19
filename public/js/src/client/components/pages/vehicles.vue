@@ -485,8 +485,6 @@ module.exports = {
                         width: 400
                     });
                 })
-            }).error(function(data, status, request) {
-
             })
         },
         loadVehicle: function() {
@@ -500,10 +498,8 @@ module.exports = {
                     updated: 'desc'
                 },
                 searchPhrase: ''
-            }, function(data, status, request) {
-                self.$set('vehicles', data.rows)
-            }).error(function(data, status, request) {
-
+            }).then((response) => {
+                self.$set('vehicles', response.data.rows)
             })
         },
         doType: function(e) {

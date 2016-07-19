@@ -79,7 +79,7 @@ module.exports = {
     methods: {
         addVehicle: function() {
             var self = this
-            self.$http.post('/api/vehicle/import', { path: self.vehicles.path }, function(data, status, request) {
+            self.$http.post('/api/vehicle/import', { path: self.vehicles.path }).then((response) => {
                 swal({
                     title: "提示!",
                     text: "导入成功,请查看列表.",

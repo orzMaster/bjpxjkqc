@@ -80,9 +80,7 @@ module.exports = {
     },
     methods: {
         updateReserve: function(e){
-            this.$http.post('/api/reserve/update', this.reserve, function(data, status, request) {
-
-            }).error(function(data, status, request) {
+            this.$http.post('/api/reserve/update', this.reserve).then((response) => {
 
             })
         }
