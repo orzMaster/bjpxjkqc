@@ -473,8 +473,8 @@ module.exports = {
             var self = this
             self.$http.post('api/brand/list', {
 
-            }, function(data, status, request) {
-                self.$set('brands', data)
+            }).then((response) => {
+                self.$set('brands', response.data)
                 self.$nextTick(function() {
                     var swiper = new Swiper('.swiper-container', {
                         nextButton: '.swiper-button-next',

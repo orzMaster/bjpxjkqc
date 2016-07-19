@@ -130,10 +130,8 @@ module.exports = {
     methods: {
         loadBrand: function() {
             var self = this
-            self.$http.post('api/brand/list', {
-
-            }, function(data, status, request) {
-                self.$set('brands', data)
+            self.$http.post('api/brand/list', {}).then((response) => {
+                self.$set('brands', response.data)
             })
         }
     },

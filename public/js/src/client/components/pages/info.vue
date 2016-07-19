@@ -418,15 +418,13 @@ module.exports = {
             var self = this
             self.$http.post('api/vehicle/get', {
                 vehicle_id: this.$route.query.id
-            }, function(data, status, request) {
-                self.$set('vehicle', data)
+            }).then((response) => {
+                self.$set('vehicle', response.data)
                 self.$nextTick(function() {
                     $('#carousel-example-generic').carousel({
                         interval: 5000
                     });
                 })
-            }).error(function(data, status, request) {
-
             })
         }
     },
