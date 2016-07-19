@@ -13,6 +13,7 @@ var dashboard = require('./components/pages/dashboard.vue');
 var brand = require('./components/pages/brand/brand.vue');
 var vehicle_list = require('./components/pages/vehicle/list.vue');
 var vehicle_add = require('./components/pages/vehicle/add.vue');
+var vehicle_import = require('./components/pages/vehicle/import.vue');
 var reserve_list = require('./components/pages/reserve/list.vue');
 
 router.redirect({
@@ -40,6 +41,10 @@ router.map({
 		name: 'vehicles_add',
 		component: Vue.extend(vehicle_add)
 	},
+	'/vehicle/import': {
+		name: 'vehicles_import',
+		component: Vue.extend(vehicle_import)
+	},
 	'/reserve': {
 		name: 'reserve',
 		component: Vue.extend(reserve_list)
@@ -48,20 +53,6 @@ router.map({
 		name: 'reserve_list',
 		component: Vue.extend(reserve_list)
 	}
-});
-
-router.beforeEach(function(transition) {
-	try {
-		console.log('即将浏览到: ' + transition.to.path);
-		transition.next();
-	} catch (e) {
-		transition.abort()
-		console.log('route caught', e)
-	}
-});
-
-router.afterEach(function(transition) {
-	console.log('成功浏览到: ' + transition.to.path);
 });
 
 router.start(App, '#app');

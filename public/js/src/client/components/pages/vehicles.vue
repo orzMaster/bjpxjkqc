@@ -95,14 +95,13 @@
 
 .brand {
     padding-top: 30px;
-    height: 180px;
+    height: 200px;
     background-color: #f8f7f5;
 }
 
 .swiper-container {
     width: 100%;
-    height: 100px;
-    margin: 10px auto;
+    height: 130px;
 }
 
 .swiper-slide {
@@ -136,8 +135,8 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 110px;
-    height: 100px;
+    width: 100px;
+    height: 130px;
     background-color: #f8f7f5;
     z-index: inherit;
 }
@@ -146,8 +145,8 @@
     position: absolute;
     top: 0px;
     right: 0px;
-    width: 110px;
-    height: 100px;
+    width: 100px;
+    height: 130px;
     background-color: #f8f7f5;
     z-index: inherit;
 }
@@ -160,6 +159,69 @@
     border: 1px solid #777777;
     width: 80px;
     height: 80px;
+}
+
+.brand-type {
+    width: 120px;
+    height: 130px;
+    float: left;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    position: relative;
+    text-align: center;
+}
+
+.brand-type:hover {
+    border: 2px solid #BB9168;
+}
+
+.brand-type-check {
+    border: 2px solid #BB9168;
+}
+
+.brand-type .brand-check,
+.brand-type i {
+    display: none;
+}
+
+.brand-type-check .brand-check,
+.brand-type-check i {
+    display: block;
+}
+
+.brand-type span {
+    position: relative;
+    line-height: 34px;
+    font-size: 14px;
+}
+
+.brand-type i {
+    position: absolute;
+    right: -1px;
+    bottom: 0px;
+    color: #fff;
+    font-size: 12px;
+}
+
+.brand-type input {
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    display: block;
+    height: 120px;
+    width: 100%;
+}
+
+.brand-type .brand-check {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #fd6947 #fd6947 transparent;
+    height: 20px;
+    width: 20px;
+    box-sizing: border-box;
 }
 
 .carlist {
@@ -330,8 +392,14 @@
         <div class="brand">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide" v-for="brand in brands">
-                        <a :alt="brand.name"><img :src="brand.src"></a>
+                    <div class="swiper-slide" v-for="item in brands">
+                        <div class="brand-type" :class="{ 'brand-type-check': brand == item._id }">
+                            <img :src="item.src">
+                            <span>{{ item.name }}</span>
+                            <input type="radio" name="type" value="{{ item._id }}" v-model="brand" @click="doBrand"/>
+                            <div class="brand-check"></div>
+                            <i class="zmdi zmdi-check zmdi-hc-fw"></i>
+                        </div>
                     </div>
                 </div>
                 <!-- Add Arrows -->
@@ -344,16 +412,19 @@
             </div>
         </div>
         <div class="carlist">
+            <div v-if="vehicles == ''">没有相关数据</div>
             <div class="description" v-for="vehicle in vehicles">
                 <div class="picture">
-                    <img data-src="holder.js/140x140" class="img-rounded" data-holder-rendered="true" style="width: 410px; height: 270px;" alt="140x140" :src="vehicle.overall">
+                    <a v-link="{ path: '/vehicles/info', query:{ id: vehicle._id }, activeClass: 'active' }">
+                        <img data-src="holder.js/140x140" class="img-rounded" data-holder-rendered="true" style="width: 410px; height: 270px;" alt="140x140" :src="vehicle.colors[vehicle.color].overall">
+                    </a>
                 </div>
                 <div class="carinfo">
                     <div class="name">
                         <span>{{ vehicle.title }}</span>
                     </div>
                     <div class="price">
-                        <span><font class="money">平行进口车价: {{ vehicle.colors[vehicle.color].price.formatMoney(0, '&yen;') }}</font>元</span>
+                        <span>平行进口车价: <font class="money">{{ vehicle.colors[vehicle.color].price.formatMoney(0, '&yen;') }}</font>元</span>
                     </div>
                     <div class="color">
                         <div class="color-group">
@@ -393,12 +464,27 @@ module.exports = {
         }
     },
     methods: {
+        doBrand: function(e){
+            var self = this
+            self.$set('brand', e.target.value)
+            self.loadVehicle()
+        },
         loadBrand: function() {
             var self = this
             self.$http.post('api/brand/list', {
 
             }, function(data, status, request) {
                 self.$set('brands', data)
+                self.$nextTick(function() {
+                    var swiper = new Swiper('.swiper-container', {
+                        nextButton: '.swiper-button-next',
+                        prevButton: '.swiper-button-prev',
+                        slidesPerView: 3,
+                        centeredSlides: true,
+                        spaceBetween: 30,
+                        width: 400
+                    });
+                })
             }).error(function(data, status, request) {
 
             })
@@ -432,15 +518,6 @@ module.exports = {
     ready: function() {
         var self = this
         self.loadBrand()
-
-        var swiper = new Swiper('.swiper-container', {
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-            slidesPerView: 3,
-            centeredSlides: true,
-            spaceBetween: 30,
-            width: 320
-        });
 
         $(".pagination").paging(20, {
             perpage: 10,

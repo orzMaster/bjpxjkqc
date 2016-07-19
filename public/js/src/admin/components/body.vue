@@ -8,10 +8,6 @@
             <component :is="sidebar"></component>
         </aside>
 
-        <aside id="chat" class="sidebar">
-            <component :is="chat"></component>
-        </aside>
-
         <section id="content">
             <div class="container">
                 <router-view></router-view>
@@ -24,13 +20,11 @@
 module.exports = {
     data: function() {
         return {
-            sidebar: 'sidebar',
-            chat: 'chat'
+            sidebar: 'sidebar'
         }
     },
     components: {
-        sidebar: require('./common/sidebar.vue'),
-        chat: require('./common/chat.vue')
+        sidebar: require('./common/sidebar.vue')
     },
     ready: function() {
 

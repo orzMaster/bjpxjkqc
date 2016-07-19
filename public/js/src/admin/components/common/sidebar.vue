@@ -11,18 +11,18 @@
                 </div>
 
                 <div class="sp-info">
-                    {{ user.full_name }}
+                    {{ user.username }}
                     <i class="zmdi zmdi-caret-down"></i>
                 </div>
             </a>
 
             <ul class="main-menu">
-                <li>
+                <!-- <li>
                     <a href="#" rel="rs-dialog" data-target="profile-dialog"><i class="zmdi zmdi-account"></i>个人信息</a>
                 </li>
                 <li>
                     <a href="#" rel="rs-dialog" data-target="setting-dialog"><i class="zmdi zmdi-settings"></i>全局设置</a>
-                </li>
+                </li> -->
                 <li>
                     <a href="#" v-on:click="logout"><i class="zmdi zmdi-time-restore"></i>安全退出</a>
                 </li>

@@ -37,16 +37,6 @@
         </ul>
     </div>
 
-    <div class="card">
-        <component :is="sales"></component>
-    </div>
-
-    <div class="mini-charts">
-        <div class="row">
-            <component :is="charts"></component>
-        </div>
-    </div>
-
     <div class="dash-widgets">
         <div class="row">
             <component :is="widget" v-for="widget in widgets"></component>
@@ -58,16 +48,10 @@
 module.exports = {
     data: function() {
         return {
-            sales: 'sales',
-            charts: 'charts',
-            widgets: ['visits', 'pie', 'weather']
+            widgets: ['weather']
         }
     },
     components: {
-        sales: require('../widgets/sales.vue'),
-        charts: require('../widgets/charts.vue'),
-        visits: require('../widgets/visits.vue'),
-        pie: require('../widgets/pie.vue'),
         weather: require('../widgets/weather.vue')
     },
     ready: function() {

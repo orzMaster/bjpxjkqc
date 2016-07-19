@@ -116,14 +116,14 @@
 
         <div class="pl-body card-padding">
             <div class="col-xs-3 brand-icon" v-for="brand in brands">
-                <a href="" id="{{brand._id}}">
-                    <img :src="brand.src" alt="">
+                <a href="" rel="rs-dialog" data-target="edit-dialog" data-id="{{brand._id}}" data-name="{{brand.name}}" data-url="{{brand.url}}">
+                    <img :src="brand.src">
                 </a>
             </div>
         </div>
     </div>
-    <edit></edit>
 </div>
+<edit></edit>
 
 </template>
 
@@ -141,6 +141,7 @@ module.exports = {
         addBrand: function() {
             if (this.brand) {
                 this.$http.post('/api/brand/add', this.brand, function(data, status, request) {
+                    $(".dropzone").removeAllFiles();
                     this.$set('brand', null)
                     this.loadBrands();
                 }).error(function(data, status, request) {
@@ -149,8 +150,64 @@ module.exports = {
             }
         },
         loadBrands: function() {
-            this.$http.post('/api/brand/list', function(data, status, request) {
-                this.$set('brands', data)
+            var self = this
+            self.$http.post('/api/brand/list', function(data, status, request) {
+                self.$set('brands', data)
+                self.$nextTick(function() {
+                    $("a[rel='rs-dialog']").each(function() {
+                        var trigger = $(this);
+                        var brand = {
+                            id: trigger.data("id"),
+                            name: trigger.data("name"),
+                            url: trigger.data("url")
+                        };
+                        var rs_dialog = $('#' + trigger.data('target'));
+                        var rs_box = rs_dialog.find('.rs-dialog-box');
+                        var rs_save = rs_dialog.find('.save-model');
+                        var rs_close = rs_dialog.find('.close-model');
+                        var rs_overlay = $('.rs-overlay');
+                        if (!rs_dialog.length) return true;
+
+                        trigger.click(function() {
+                            self.$children[0].$data.brand = brand
+                            var w1 = $(window).width();
+                            $('html').addClass('dialog-open');
+                            var w2 = $(window).width();
+                            c = w2 - w1 + parseFloat($('body').css('padding-right'));
+                            if (c > 0) $('body').css('padding-right', c + 'px');
+
+                            rs_overlay.fadeIn('fast');
+                            rs_dialog.show('fast', function() {
+                                rs_dialog.addClass('in');
+                            });
+                            return false;
+                        });
+
+                        rs_save.click(function(e) {
+                            rs_dialog.removeClass('in').delay(150).queue(function() {
+                                rs_dialog.hide().dequeue();
+                                rs_overlay.fadeOut('slow');
+                                $('html').removeClass('dialog-open');
+                                $('body').css('padding-right', '');
+                            });
+                            return false;
+                        });
+
+                        rs_close.click(function(e) {
+                            rs_dialog.removeClass('in').delay(150).queue(function() {
+                                rs_dialog.hide().dequeue();
+                                rs_overlay.fadeOut('slow');
+                                $('html').removeClass('dialog-open');
+                                $('body').css('padding-right', '');
+                            });
+                            return false;
+                        });
+
+                        rs_box.click(function(e) {
+                            e.stopPropagation();
+                        });
+                    });
+                })
             }).error(function(data, status, request) {
 
             })

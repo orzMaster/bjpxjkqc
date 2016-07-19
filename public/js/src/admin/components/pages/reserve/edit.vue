@@ -18,7 +18,7 @@
                         <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
                         <div class="col-sm-4">
                             <div class="fg-line">
-                                <input type="text" class="form-control" placeholder="联系人" v-model="reserve.contact" readonly>
+                                <input type="text" class="form-control" placeholder="联系人" v-model="reserve.contact">
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
                         <div class="col-sm-4">
                             <div class="fg-line">
-                                <input type="text" class="form-control" placeholder="Phone Number" v-model="reserve.phone" readonly>
+                                <input type="text" class="form-control" placeholder="Phone Number" v-model="reserve.phone">
                             </div>
                         </div>
                     </div>

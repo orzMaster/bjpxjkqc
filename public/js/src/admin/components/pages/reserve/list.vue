@@ -129,54 +129,6 @@ module.exports = {
                         status: trigger.data("row-status"),
                         phone: trigger.data("row-phone")
                     };
-                    var rs_dialog = $('#' + trigger.data('target'));
-                    var rs_box = rs_dialog.find('.rs-dialog-box');
-                    var rs_save = rs_dialog.find('.save-model');
-                    var rs_close = rs_dialog.find('.close-model');
-                    var rs_overlay = $('.rs-overlay');
-                    if (!rs_dialog.length) return true;
-
-                    trigger.click(function() {
-                        var w1 = $(window).width();
-                        $('html').addClass('dialog-open');
-                        var w2 = $(window).width();
-                        c = w2 - w1 + parseFloat($('body').css('padding-right'));
-                        if (c > 0) $('body').css('padding-right', c + 'px');
-
-                        rs_overlay.fadeIn('fast');
-                        rs_dialog.show('fast', function() {
-                            rs_dialog.addClass('in');
-                        });
-                        return false;
-                    });
-
-                    rs_save.click(function(e) {
-                        rs_dialog.removeClass('in').delay(150).queue(function() {
-                            rs_dialog.hide().dequeue();
-                            rs_overlay.fadeOut('slow');
-                            $('html').removeClass('dialog-open');
-                            $('body').css('padding-right', '');
-                        });
-                        $('#grid-command-community').bootgrid('reload');
-                        return false;
-                    });
-
-                    rs_close.click(function(e) {
-                        rs_dialog.removeClass('in').delay(150).queue(function() {
-                            rs_dialog.hide().dequeue();
-                            rs_overlay.fadeOut('slow');
-                            $('html').removeClass('dialog-open');
-                            $('body').css('padding-right', '');
-                        });
-                        return false;
-                    });
-
-                    rs_dialog.click(function(e) {
-                        rs_close.trigger('click');
-                    });
-                    rs_box.click(function(e) {
-                        e.stopPropagation();
-                    });
                 }).end().find(".command-delete").on("click", function(e) {
                     //alert("You pressed delete on row: " + $(this).data("row-id"));
                     var trigger = $(this);
@@ -191,6 +143,57 @@ module.exports = {
                     }).error(function(data, status, request) {
 
                     })
+                });
+
+                self.$nextTick(function() {
+                    $("button[rel='rs-dialog']").each(function() {
+                        var trigger = $(this);
+                        var rs_dialog = $('#' + trigger.data('target'));
+                        var rs_box = rs_dialog.find('.rs-dialog-box');
+                        var rs_save = rs_dialog.find('.save-model');
+                        var rs_close = rs_dialog.find('.close-model');
+                        var rs_overlay = $('.rs-overlay');
+                        if (!rs_dialog.length) return true;
+
+                        trigger.click(function() {
+                            var w1 = $(window).width();
+                            $('html').addClass('dialog-open');
+                            var w2 = $(window).width();
+                            c = w2 - w1 + parseFloat($('body').css('padding-right'));
+                            if (c > 0) $('body').css('padding-right', c + 'px');
+
+                            rs_overlay.fadeIn('fast');
+                            rs_dialog.show('fast', function() {
+                                rs_dialog.addClass('in');
+                            });
+                            return false;
+                        });
+
+                        rs_save.click(function(e) {
+                            rs_dialog.removeClass('in').delay(150).queue(function() {
+                                rs_dialog.hide().dequeue();
+                                rs_overlay.fadeOut('slow');
+                                $('html').removeClass('dialog-open');
+                                $('body').css('padding-right', '');
+                            });
+                            $('#grid-command-community').bootgrid('reload');
+                            return false;
+                        });
+
+                        rs_close.click(function(e) {
+                            rs_dialog.removeClass('in').delay(150).queue(function() {
+                                rs_dialog.hide().dequeue();
+                                rs_overlay.fadeOut('slow');
+                                $('html').removeClass('dialog-open');
+                                $('body').css('padding-right', '');
+                            });
+                            return false;
+                        });
+
+                        rs_box.click(function(e) {
+                            e.stopPropagation();
+                        });
+                    });
                 });
             });
         }

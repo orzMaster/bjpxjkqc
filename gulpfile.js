@@ -10,7 +10,10 @@ var jshint = require('gulp-jshint')
 
 var config = {
 	images: {
-
+		src: [
+			'bower_components/bootstrap-fileinput/img/*.*'
+		],
+		dist: 'public/css/img'
 	},
 	fonts: {
 		src: [
@@ -32,6 +35,7 @@ var config = {
 			'public/vendors/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
 			'bower_components/animate.css/animate.min.css',
 			'bower_components/dropzone/dist/min/dropzone.min.css',
+			'bower_components/bootstrap-fileinput/css/fileinput.min.css',
 			'bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 			'bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css'
 		],
@@ -62,7 +66,8 @@ var config = {
 			'bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
 			'public/vendors/sparklines/jquery.sparkline.min.js',
 			'public/vendors/bootstrap-growl/bootstrap-growl.min.js',
-			'public/vendors/fileinput/fileinput.min.js',
+			'bower_components/bootstrap-fileinput/js/fileinput.min.js',
+			'bower_components/bootstrap-fileinput/js/locales/zh.js',
 			'bower_components/moment/min/moment.min.js'
 		],
 		dist: 'public/js/lib'
@@ -83,7 +88,8 @@ gulp.task('lint', function() {
 })
 
 gulp.task('images', function() {
-
+	gulp.src(config.images.src)
+		.pipe(gulp.dest(config.images.dist))
 })
 
 gulp.task('fonts', function() {

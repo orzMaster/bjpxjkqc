@@ -7,12 +7,12 @@ var controller = require('./controller');
 var upload = require('./upload');
 
 router.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By", ' 3.2.1')
-    res.header("Content-Type", "application/json;charset=utf-8");
-    next();
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "X-Requested-With");
+	res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+	res.header("X-Powered-By", ' 3.2.1')
+	res.header("Content-Type", "application/json;charset=utf-8");
+	next();
 });
 
 router.post('/reserve/delete', controller.reserve_delete);
@@ -28,12 +28,16 @@ router.post('/user/info', controller.user_info);
 router.post('/upload/file', upload.upload_file);
 router.post('/upload/images', upload.upload_images);
 router.post('/upload/brand', upload.upload_brand);
+router.post('/upload/vehicle', upload.upload_vehicle);
 
 router.post('/brand/get', controller.brand_get);
+router.post('/brand/update', controller.brand_update);
 router.post('/brand/add', controller.brand_add);
 router.post('/brand/list', controller.brand_list);
 
+router.post('/vehicle/get', controller.vehicle_get);
 router.post('/vehicle/add', controller.vehicle_add);
+router.post('/vehicle/import', controller.vehicle_import);
 router.post('/vehicle/list', controller.vehicle_list);
 
 module.exports = router;

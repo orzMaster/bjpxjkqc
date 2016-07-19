@@ -14,21 +14,7 @@
             </li>
 
             <li class="hi-logo hidden-xs">
-                <a href="index.html">Material Admin</a>
-            </li>
-
-            <li class="pull-right">
-                <ul class="hi-menu">
-                    <li data-ma-action="search-open">
-                        <a href="index.html"><i class="him-icon zmdi zmdi-search"></i></a>
-                    </li>
-                    <component :is="messages"></component>
-                    <component :is="notifications"></component>
-                    <component :is="tasks"></component>
-                    <component :is="settings"></component>
-                    <li class="hidden-xs ma-trigger" data-ma-action="sidebar-open" data-ma-target="#chat">
-                        <a href="index.html"><i class="him-icon zmdi zmdi-comment-alt-text"></i></a>
-                    </li>
+                <a href="index.html">{{ title }}</a>
             </li>
         </ul>
 
@@ -46,17 +32,11 @@
 module.exports = {
     data: function() {
         return {
-            messages: 'messages',
-            notifications: 'notifications',
-            tasks: 'tasks',
-            settings: 'settings'
+            title: '后台'
         }
     },
     components: {
-        messages: require('./common/messages.vue'),
-        notifications: require('./common/notifications.vue'),
-        tasks: require('./common/tasks.vue'),
-        settings: require('./common/settings.vue')
+
     },
     ready: function() {
         //$('body').toggleClass('toggled sw-toggled');

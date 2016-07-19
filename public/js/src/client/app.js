@@ -17,43 +17,34 @@ var buy = require('./components/pages/buy.vue');
 var contact = require('./components/pages/contact.vue');
 
 router.redirect({
-    '/': '/home'
+	'/': '/home'
 });
 
 router.map({
-    '/home': {
-        name: 'home',
-        component: Vue.extend(home)
-    },
-    '/info': {
-        name: 'info',
-        component: Vue.extend(info)
-    },
-    '/vehicles': {
-        name: 'vehicles',
-        component: Vue.extend(vehicles)
-    },
-    '/reserve': {
-        name: 'reserve',
-        component: Vue.extend(reserve)
-    },
-    '/buy': {
-        name: 'buy',
-        component: Vue.extend(buy)
-    },
-    '/contact': {
-        name: 'contact',
-        component: Vue.extend(contact)
-    }
-});
-
-router.beforeEach(function(transition) {
-    console.log('即将浏览到: ' + transition.to.path);
-    transition.next();
-});
-
-router.afterEach(function(transition) {
-    console.log('成功浏览到: ' + transition.to.path);
+	'/home': {
+		name: 'home',
+		component: Vue.extend(home)
+	},
+	'/vehicles/info': {
+		name: 'info',
+		component: Vue.extend(info)
+	},
+	'/vehicles': {
+		name: 'vehicles',
+		component: Vue.extend(vehicles)
+	},
+	'/reserve': {
+		name: 'reserve',
+		component: Vue.extend(reserve)
+	},
+	'/buy': {
+		name: 'buy',
+		component: Vue.extend(buy)
+	},
+	'/contact': {
+		name: 'contact',
+		component: Vue.extend(contact)
+	}
 });
 
 router.start(App, '#app');
