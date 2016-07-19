@@ -151,7 +151,7 @@ module.exports = {
         },
         loadBrands: function() {
             var self = this
-            self.$http.post('/api/brand/list', function(data, status, request) {
+            self.$http.post('/api/brand/list', {}, function(data, status, request) {
                 self.$set('brands', data)
                 self.$nextTick(function() {
                     $("a[rel='rs-dialog']").each(function() {

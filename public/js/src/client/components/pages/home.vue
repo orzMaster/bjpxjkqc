@@ -134,8 +134,6 @@ module.exports = {
 
             }, function(data, status, request) {
                 self.$set('brands', data)
-            }).error(function(data, status, request) {
-
             })
         }
     },

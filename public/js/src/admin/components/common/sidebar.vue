@@ -76,13 +76,15 @@ module.exports = {
             });
         },
         loadMenuList: function() {
-            this.$http.post('/api/menu/list', {}, function (data, status, request) {
-                this.$set('menus', data)
+            var self = this
+            self.$http.post('/api/menu/list', {}, function (data, status, request) {
+                self.$set('menus', data)
             })
         },
         loadUserInfo: function() {
-            this.$http.post('/api/user/info', {}, function (data, status, request) {
-                this.$set('user', data)
+            var self = this
+            self.$http.post('/api/user/info', {}, function (data, status, request) {
+                self.$set('user', data)
             })
         }
     },
