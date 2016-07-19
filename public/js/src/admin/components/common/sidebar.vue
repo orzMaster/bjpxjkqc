@@ -77,14 +77,14 @@ module.exports = {
         },
         loadMenuList: function() {
             var self = this
-            self.$http.post('/api/menu/list', {}, function (data, status, request) {
-                self.$set('menus', data)
+            self.$http.post('/api/menu/list', {}).then((response) => {
+                self.$set('menus', response.data)
             })
         },
         loadUserInfo: function() {
             var self = this
-            self.$http.post('/api/user/info', {}, function (data, status, request) {
-                self.$set('user', data)
+            self.$http.post('/api/user/info', {}).then((response) => {
+                self.$set('user', response.data)
             })
         }
     },
