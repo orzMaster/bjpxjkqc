@@ -24,5 +24,9 @@ module.exports = {
         secret: 'B88DE5436EE95004794418102FCF94F8',
         name: 'vue-seed',
         domain: ''
+    },
+    custom: {
+        phone: '',
+        email: ''
     }
 };
