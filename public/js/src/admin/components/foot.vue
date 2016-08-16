@@ -7,13 +7,12 @@
     <component :is="setting"></component>
     <footer id="footer">
         Copyright &copy; 2015 Material Admin
-
-        <ul class="f-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html">Dashboard</a></li>
-            <li><a href="index.html">Reports</a></li>
-            <li><a href="index.html">Support</a></li>
-            <li><a href="index.html">Contact</a></li>
+        <ul class="f-menu" style="display: none">
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/">Reports</a></li>
+            <li><a href="/">Support</a></li>
+            <li><a href="/">Contact</a></li>
         </ul>
     </footer>
 </template>

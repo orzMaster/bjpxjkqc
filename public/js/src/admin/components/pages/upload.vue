@@ -52,11 +52,11 @@
     </ul>
 </div>
 
-<div class="col-sm-6">
+<div class="col-sm-4">
     <!-- Picture List -->
     <div class="card">
         <div class="card-header">
-            <h2>品牌列表<small>Cras congue nec lorem eget posuere</small></h2>
+            <h2>上传<small></small></h2>
             <ul class="actions">
                 <li class="dropdown action-show">
                     <a href="widgets.html" data-toggle="dropdown">
@@ -78,11 +78,11 @@
     </div>
 </div>
 
-<div class="col-sm-6">
+<div class="col-sm-8">
     <!-- Picture List -->
     <div class="card">
         <div class="card-header">
-            <h2>品牌列表<small>Cras congue nec lorem eget posuere</small></h2>
+            <h2>文件列表<small></small></h2>
             <ul class="actions">
                 <li class="dropdown action-show">
                     <a href="widgets.html" data-toggle="dropdown">

@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'vue-seed',
+    name: 'bjpxjkqc',
     title: '北京平行进口汽车',
     express: {
         host: '127.0.0.1',
@@ -9,7 +9,7 @@ module.exports = {
         mongo: {
             host: '127.0.0.1',
             port: 27017,
-            db: 'vue-seed'
+            db: 'bjpxjkqc'
         },
         redis: {
             host: '127.0.0.1',
@@ -22,7 +22,7 @@ module.exports = {
     },
     cookie: {
         secret: 'B88DE5436EE95004794418102FCF94F8',
-        name: 'vue-seed',
+        name: 'bjpxjkqc',
         domain: ''
     },
     custom: {

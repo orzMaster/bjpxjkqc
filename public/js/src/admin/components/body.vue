@@ -4,9 +4,7 @@
 
 <template>
     <section id="main">
-        <aside id="sidebar" class="sidebar c-overflow">
-            <component :is="sidebar"></component>
-        </aside>
+        <component :is="sidebar"></component>
 
         <section id="content">
             <div class="container">

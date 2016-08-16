@@ -14,7 +14,7 @@
             </li>
 
             <li class="hi-logo hidden-xs">
-                <a href="index.html">{{ title }}</a>
+                <a href="admin">{{ title }}</a>
             </li>
         </ul>
 

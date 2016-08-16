@@ -9,7 +9,7 @@
     margin-top: -60px;
     margin-left: auto;
     margin-right: auto;
-    background: url("/static/images/client/home_01.png") no-repeat;
+    background: url("/static/images/client/home_01.png") no-repeat center center;
     width: 100%;
     max-width: 1600px;
     height: 872px;
@@ -21,7 +21,7 @@
 .home .introduce {
     margin-left: auto;
     margin-right: auto;
-    background: url("/static/images/client/home_03.png") no-repeat;
+    background: url("/static/images/client/home_03.png") no-repeat center center;
     width: 100%;
     max-width: 1600px;
     height: 688px;
@@ -33,7 +33,7 @@
 .home .advantage {
     margin-left: auto;
     margin-right: auto;
-    background: url("/static/images/client/home_05.png") no-repeat;
+    background: url("/static/images/client/home_05.png") no-repeat center center;
     width: 100%;
     max-width: 1600px;
     height: 953px;
@@ -45,7 +45,7 @@
 .home .style {
     margin-left: auto;
     margin-right: auto;
-    background: url("/static/images/client/home_07.png") no-repeat;
+    background: url("/static/images/client/home_07.png") no-repeat center center;
     width: 100%;
     max-width: 1600px;
     height: 683px;
