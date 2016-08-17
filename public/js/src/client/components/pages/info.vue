@@ -41,7 +41,7 @@
     background-color: #ffffff;
     margin-left: auto;
     margin-right: auto;
-    width: 1170px;
+    max-width: 1170px;
     border: 1px solid #EAEAEA;
     height: 1040px;
     margin-bottom: 20px;
@@ -52,7 +52,7 @@
     background-color: #ffffff;
     margin-left: auto;
     margin-right: auto;
-    width: 1170px;
+    max-width: 1170px;
     border: 1px solid #EAEAEA;
     margin-bottom: 20px;
     padding: 20px;

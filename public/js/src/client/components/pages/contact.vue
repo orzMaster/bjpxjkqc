@@ -78,7 +78,7 @@
 
 <template>
     <div class="concat">
-        <div class="banner">
+        <div class="banner hidden-xs">
             <img src="/static/images/client/contact.png"></img>
         </div>
         <div class="us">

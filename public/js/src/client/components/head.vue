@@ -27,16 +27,26 @@
         border-bottom: 3px solid #FFFFFF;
         color: #FFFFFF;
     }
-    
+
     .navbar-nav .active {
         border-bottom: 3px solid #FFFFFF;
         color: #FFFFFF;
     }
-    
-    .navbar-nav > li i {
-        font-size: 20px;
-        vertical-align: -4px;
-        margin: 0 -2px 0 7px;
+
+    .in .navbar-nav > li {
+        height: 40px;
+        width: 95%;
+        line-height: 40px;
+    }
+
+    .in .navbar-nav > li:hover {
+        border: 0;
+        color: #FFFFFF;
+    }
+
+    .in .navbar-nav .active {
+        border: 0;
+        color: #FFFFFF;
     }
 </style>
 
