@@ -74,8 +74,8 @@
 
 .home .cooperation ul > li {
     float: left;
-    width: 98px;
-    height: 98px;
+    width: 100px;
+    height: 100px;
     background-color: #FFFFFF;
     text-align: center;
     margin: 17px;

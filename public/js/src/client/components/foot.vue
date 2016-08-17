@@ -25,7 +25,7 @@
         <div class="copyright">
             <span>Copyright © 2003-2016 Beijing parallel import Automobile Sales Co., Ltd. All rights Reserved.  北京平行进口汽车销售有限公司 版权所有</span>
             <br>
-            <span>京ICP备xxxxxx号-28</span>
+            <span>京ICP备16041509号-1</span>
         </div>
     </footer>
 </template>
