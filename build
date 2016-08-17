@@ -1,0 +1,1 @@
+browserify -t vueify -e public/js/src/admin/app.js -o public/js/build/admin/build.js && browserify -t vueify -e public/js/src/client/app.js -o public/js/build/client/build.js

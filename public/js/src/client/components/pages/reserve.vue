@@ -14,7 +14,7 @@
 .test .login {
     margin: auto;
     padding: 50px 50px 50px 50px;
-    width: 500px;
+    width: 450px;
     height: 450px;
     border: 1px solid #EAEAEA;
     border-radius: 3px;

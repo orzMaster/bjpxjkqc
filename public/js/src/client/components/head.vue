@@ -1,11 +1,14 @@
 <style>
+    .navbar {
+        padding: 0 20px 0 20px;
+    }
+
     .navbar-header {
         height: 80px;
         min-height: 80px;
     }
 
     .navbar-toggle {
-        margin-right: 22px;
         margin-top: 22px;
     }
 
