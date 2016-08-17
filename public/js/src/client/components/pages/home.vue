@@ -68,18 +68,17 @@
 .home .cooperation ul {
     margin-left: auto;
     margin-right: auto;
-    width: 1170px;
-    height: 440px;
+    max-width: 1197px;
     list-style: none;
 }
 
 .home .cooperation ul > li {
     float: left;
-    width: 100px;
-    height: 100px;
+    width: 98px;
+    height: 98px;
     background-color: #FFFFFF;
     text-align: center;
-    margin: 10px;
+    margin: 17px;
 }
 
 .home .cooperation ul > li {
@@ -95,16 +94,16 @@
 <template>
 
 <div class="home">
-    <div class="banner">
+    <div class="banner hidden-xs">
 
     </div>
-    <div class="introduce">
+    <div class="introduce hidden-xs">
 
     </div>
-    <div class="advantage">
+    <div class="advantage hidden-xs">
 
     </div>
-    <div class="style">
+    <div class="style hidden-xs">
 
     </div>
     <div class="cooperation">

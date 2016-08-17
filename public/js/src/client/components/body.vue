@@ -4,7 +4,9 @@
 }
 
 .main {
+    margin-top: 80px;
     background-color: #FFFDFA;
+    padding-bottom: 100px;
 }
 </style>
 

@@ -1,23 +1,23 @@
 <style>
-.footer {
-    background: #31302f;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    height: 100px;
-    width: 100%;
-    filter:alpha(Opacity=80);
-    -moz-opacity:0.8;
-    opacity: 0.8;
-}
-
-.copyright {
-    padding-top: 20px;
-    line-height: 24px;
-    font-size: 14px;
-    text-align: center;
-    color: #ffffff;
-}
+    .footer {
+        background: #31302f;
+        min-height: 80px;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        filter: alpha(Opacity=80);
+        -moz-opacity: 0.8;
+        opacity: 0.8;
+    }
+    
+    .copyright {
+        padding-top: 20px;
+        line-height: 24px;
+        font-size: 14px;
+        text-align: center;
+        color: #ffffff;
+    }
 </style>
 
 <template>
@@ -31,22 +31,20 @@
 </template>
 
 <script>
+    module.exports = {
+        data: function() {
+            return {
 
-module.exports = {
-    data: function() {
-        return {
+            }
+        },
+        methods: {
+
+        },
+        components: {
+
+        },
+        ready: function() {
 
         }
-    },
-    methods: {
-
-    },
-    components: {
-
-    },
-    ready: function() {
-
     }
-}
-
 </script>

@@ -11,7 +11,7 @@
     background-color: #ffffff;
     margin-left: auto;
     margin-right: auto;
-    width: 1170px;
+    max-width: 1170px;
     border: 1px solid #EAEAEA;
     margin-bottom: 20px;
 }
@@ -403,10 +403,10 @@
                     </div>
                 </div>
                 <!-- Add Arrows -->
-                <div class="swiper-button-right">
+                <div class="swiper-button-right hidden-xs">
                     <div class="swiper-button-next"></div>
                 </div>
-                <div class="swiper-button-left">
+                <div class="swiper-button-left hidden-xs">
                     <div class="swiper-button-prev"></div>
                 </div>
             </div>

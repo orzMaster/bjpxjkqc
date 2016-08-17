@@ -11,7 +11,7 @@
     background-color: #ffffff;
     margin-left: auto;
     margin-right: auto;
-    width: 1170px;
+    max-width: 1170px;
     border: 1px solid #EAEAEA;
     margin-bottom: 20px;
 }
@@ -68,7 +68,7 @@
             <br>
             <span>验车满意后，补齐车辆尾款，客户即可将新车提走。如果有需要，北京平行进口车也可提供国内物流服务，确保送车到家。</span>
         </div>
-        <div class="list">
+        <div class="list hidden-xs">
 
         </div>
     </div>

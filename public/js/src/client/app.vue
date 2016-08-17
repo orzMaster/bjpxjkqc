@@ -3,7 +3,7 @@
 </style>
 
 <template>
-    <div class="main">
+    <div>
         <component :is="head"></component>
         <component :is="body"></component>
         <component :is="foot"></component>

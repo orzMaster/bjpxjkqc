@@ -56,7 +56,7 @@
     <!-- Picture List -->
     <div class="card">
         <div class="card-header">
-            <h2>上传<small></small></h2>
+            <h2>上传<small>品牌格式:98x98 预览图片:415x275 细节图片:1200x600</small></h2>
             <ul class="actions">
                 <li class="dropdown action-show">
                     <a href="widgets.html" data-toggle="dropdown">

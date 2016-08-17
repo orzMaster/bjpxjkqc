@@ -1,6 +1,5 @@
 <style>
     .concat {
-        margin-top: 30px;
         width: 100%;
         text-align: center;
     }
@@ -14,9 +13,9 @@
         background-color: #ffffff;
         margin-left: auto;
         margin-right: auto;
-        width: 1170px;
+        max-width: 1170px;
         border: 1px solid #EAEAEA;
-        height: 800px;
+        min-height: 800px;
         margin-bottom: 20px;
     }
     
@@ -45,7 +44,7 @@
     .us .allmap {
         margin: 30px;
         padding: 20px;
-        height: 330px;
+        min-height: 330px;
         overflow: hidden;
     }
     
@@ -78,7 +77,6 @@
 </style>
 
 <template>
-
     <div class="concat">
         <div class="banner">
             <img src="/static/images/client/contact.png"></img>

@@ -56,7 +56,7 @@
 <div class="col-sm-6">
     <div class="card">
         <div class="card-header">
-            <h2>添加品牌<small>Pellentesque ac lectus sed elit dictum vehicula</small></h2>
+            <h2>添加品牌<small>品牌格式:98x98</small></h2>
         </div>
 
         <div class="card-body card-padding" role="brand">

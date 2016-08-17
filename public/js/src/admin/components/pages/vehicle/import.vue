@@ -42,7 +42,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h2>添加汽车文件<small><a href="/static/upload/vehicles.json.zip">点击下载汽车文件模板</a></small></h2>
+        <h2>添加汽车文件<small>预览图片:415x275(colors.overall) 细节图片:1200x600(pictures.src)<br><a href="/static/upload/vehicles.json.zip">点击下载汽车文件模板</a></small></h2>
     </div>
 
     <div class="card-body card-padding" role="vehicle">

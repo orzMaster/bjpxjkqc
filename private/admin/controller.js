@@ -1,5 +1,6 @@
 'use strict';
 
+var config = require('../../config');
 var manager = require('./manager');
 var helper = require('../util/helper');
 var chineseDays = {
@@ -17,14 +18,14 @@ module.exports = {
 		if (!req.session.user) {
 			return res.render(
 				'admin/login', {
-					title: ''
+					title: config.title
 				}
 			)
 		}
 
 		res.render(
 			'admin/index', {
-				title: ''
+				title: config.title
 			}
 		)
 	},
@@ -35,14 +36,14 @@ module.exports = {
 					if (!req.session.user) {
 						return res.render(
 							'admin/login', {
-								title: ''
+								title: config.title
 							}
 						)
 					}
 
 					res.render(
 						'admin/index', {
-							title: ''
+							title: config.title
 						}
 					)
 					break
@@ -54,7 +55,7 @@ module.exports = {
 							req.flash('error', '帐号不存在!')
 							return res.render(
 								'admin/login', {
-									title: ''
+									title: config.title
 								}
 							)
 						}
@@ -65,14 +66,14 @@ module.exports = {
 								req.flash('error', '密码不正确!')
 								return res.render(
 									'admin/login', {
-										title: ''
+										title: config.title
 									}
 								)
 							} else {
 								req.session.user = account
 								return res.render(
 									'admin/index', {
-										title: ''
+										title: config.title
 									}
 								)
 							}
@@ -80,7 +81,7 @@ module.exports = {
 							req.flash('error', '帐号不存在!')
 							return res.render(
 								'admin/login', {
-									title: ''
+									title: config.title
 								}
 							)
 						}
@@ -102,7 +103,7 @@ module.exports = {
 						req.session.user = account
 						res.render(
 							'admin/index', {
-								title: ''
+								title: config.title
 							}
 						)
 					})
